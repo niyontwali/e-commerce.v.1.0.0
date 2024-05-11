@@ -7,9 +7,11 @@ import { usePathname } from "next/navigation";
 import logo from "@/assets/images/logo.png";
 import { specialPath } from "@/constants";
 import { cn } from "@/utils";
+import LanguageDropdown from "./LanguageDropdown";
 
 import { Button } from "./ui/button";
-import { CircleHelp, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,14 +54,14 @@ export default function Navbar() {
   }, []);
 
   const isActive = (id: string) => {
-    if (pathName === "/help") {
-      return id === "help";
-    } else if (pathName === "/cart") {
+    if (pathName === "/cart") {
       return id === "cart";
     } else {
       return id === activeSection;
     }
   };
+
+  const t = useTranslations("Index");
 
   return (
     <>
@@ -86,7 +88,7 @@ export default function Navbar() {
                     : "text-gray hover:text-green"
                 )}
                 onClick={() => navigateToSection("workout-plans")}>
-                Workout Plans
+                {t('navbar.workoutPlans')}
                 <span
                   className="absolute left-0 right-0 bottom-0 h-0.5 bg-green"
                   style={{
@@ -102,7 +104,7 @@ export default function Navbar() {
                   isActive("faqs") ? "text-green" : "text-gray hover:text-green"
                 )}
                 onClick={() => navigateToSection("faqs")}>
-                FAQs
+                 {t('navbar.faqs')}
                 <span
                   className="absolute left-0 right-0 bottom-0 h-0.5 bg-green"
                   style={{
@@ -120,7 +122,7 @@ export default function Navbar() {
                     : "text-gray hover:text-green"
                 )}
                 onClick={() => navigateToSection("contact-us")}>
-                Contact Us
+                 {t('navbar.contactUs')}
                 <span
                   className="absolute left-0 right-0 bottom-0 h-0.5 bg-green"
                   style={{
@@ -130,17 +132,7 @@ export default function Navbar() {
                 />
               </Button>
             </div>
-            <div className="flex space-x-5">
-              <Link href="/help">
-                <CircleHelp
-                  className={cn(
-                    isActive("help")
-                      ? "text-green"
-                      : "text-gray hover:text-green"
-                  )}
-                  size="21"
-                />
-              </Link>
+            <div className="flex space-x-5 items-center">
               <Link href="/cart">
                 <ShoppingCart
                   className={cn(
@@ -151,6 +143,7 @@ export default function Navbar() {
                   size="21"
                 />
               </Link>
+              <LanguageDropdown />
             </div>
 
             <button
