@@ -1,0 +1,22 @@
+{
+  "Index": {
+    "navbar": {
+      "workoutPlans": "Trainingspläne",
+      "faqs": "FAQs",
+      "contactUs": "Kontaktiere uns"
+    },
+    "workoutPlans": {
+      "title": "Unsere Trainings- und Ernährungspläne"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen"
+    },
+    "contactUs": {
+      "title": "Kontaktiere uns",
+      "name": "Name",
+      "email": "E-Mail",
+      "message": "Nachricht",
+      "submit": "Absenden"
+    }
+  }
+}
