@@ -1,0 +1,22 @@
+{
+  "Index": {
+    "navbar": {
+      "workoutPlans": "Treeningukavad",
+      "faqs": "FAQs",
+      "contactUs": "Võta meiega ühendust"
+    },
+    "workoutPlans": {
+      "title": "Meie treeningu- ja toitumiskavad"
+    },
+    "faq": {
+      "title": "Korduma kippuvad küsimused"
+    },
+    "contactUs": {
+      "title": "Võta meiega ühendust",
+      "name": "Nimi",
+      "email": "E-post",
+      "message": "Sõnum",
+      "submit": "Esita"
+    }
+  }
+}
