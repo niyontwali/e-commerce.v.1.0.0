@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+
 import { Work_Sans, Signika } from "next/font/google";
 
 /* Components */
@@ -6,7 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* css */
-import "./globals.css";
+import "../globals.css";
 import Preloader from "@/components/Preloader";
 
 /* Fonts */
@@ -26,24 +30,30 @@ export const metadata: Metadata = {
     default: "Alpha Elite e-shop",
     template: "%s - Alpha Elite e-shop",
   },
-  description:
-    "",
+  description: "",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params: { locale },
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
-        className={`${work_sans.variable} ${signika.variable} scroll-smooth bg-background-50 font-body text-core-600`}
-      >
-        <Preloader />
-        <Navbar />
-        {children}
-        <Footer />
+        className={`${work_sans.variable} ${signika.variable} scroll-smooth bg-background-50 font-body text-core-600`}>
+        <NextIntlClientProvider messages={messages}>
+          <Preloader />
+          <Navbar />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -72,7 +72,7 @@ body {
 .spinner {
   width: 40px;
   height: 40px;
-  border: 5px solid rgba(227, 151, 23, 0.9);
+  border: 2px solid #00A79D;
   border-top-color: transparent;
   border-radius: 50%;
   animation: rotate 1s infinite linear;
